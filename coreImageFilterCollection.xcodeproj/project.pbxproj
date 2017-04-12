@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		CD2E6EE41E9EA0A000CB634E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6EE31E9EA0A000CB634E /* main.m */; };
 		CD2E6EE71E9EA0A000CB634E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6EE61E9EA0A000CB634E /* AppDelegate.m */; };
-		CD2E6EEA1E9EA0A000CB634E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6EE91E9EA0A000CB634E /* ViewController.m */; };
 		CD2E6EED1E9EA0A000CB634E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E6EEB1E9EA0A000CB634E /* Main.storyboard */; };
 		CD2E6EEF1E9EA0A000CB634E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2E6EEE1E9EA0A000CB634E /* Assets.xcassets */; };
 		CD2E6EF21E9EA0A000CB634E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E6EF01E9EA0A000CB634E /* LaunchScreen.storyboard */; };
 		CD2E6EFD1E9EA0A000CB634E /* coreImageFilterCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6EFC1E9EA0A000CB634E /* coreImageFilterCollectionTests.m */; };
 		CD2E6F081E9EA0A000CB634E /* coreImageFilterCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F071E9EA0A000CB634E /* coreImageFilterCollectionUITests.m */; };
+		CD2E6F1E1E9EA95E00CB634E /* ImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */; };
+		CD2E6F241E9EAEE400CB634E /* ImageFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F231E9EAEE400CB634E /* ImageFiltersViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +40,6 @@
 		CD2E6EE31E9EA0A000CB634E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD2E6EE51E9EA0A000CB634E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD2E6EE61E9EA0A000CB634E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CD2E6EE81E9EA0A000CB634E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CD2E6EE91E9EA0A000CB634E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CD2E6EEC1E9EA0A000CB634E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD2E6EEE1E9EA0A000CB634E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD2E6EF11E9EA0A000CB634E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,10 @@
 		CD2E6F031E9EA0A000CB634E /* coreImageFilterCollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coreImageFilterCollectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2E6F071E9EA0A000CB634E /* coreImageFilterCollectionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = coreImageFilterCollectionUITests.m; sourceTree = "<group>"; };
 		CD2E6F091E9EA0A000CB634E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD2E6F1C1E9EA95E00CB634E /* ImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCollectionCell.h; path = Views/ImageCollectionCell.h; sourceTree = "<group>"; };
+		CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCollectionCell.m; path = Views/ImageCollectionCell.m; sourceTree = "<group>"; };
+		CD2E6F221E9EAEE400CB634E /* ImageFiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageFiltersViewController.h; path = Views/ImageFiltersViewController.h; sourceTree = "<group>"; };
+		CD2E6F231E9EAEE400CB634E /* ImageFiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageFiltersViewController.m; path = Views/ImageFiltersViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +104,9 @@
 		CD2E6EE11E9EA0A000CB634E /* coreImageFilterCollection */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E6F181E9EA3F300CB634E /* Views */,
 				CD2E6EE51E9EA0A000CB634E /* AppDelegate.h */,
 				CD2E6EE61E9EA0A000CB634E /* AppDelegate.m */,
-				CD2E6EE81E9EA0A000CB634E /* ViewController.h */,
-				CD2E6EE91E9EA0A000CB634E /* ViewController.m */,
 				CD2E6EEB1E9EA0A000CB634E /* Main.storyboard */,
 				CD2E6EEE1E9EA0A000CB634E /* Assets.xcassets */,
 				CD2E6EF01E9EA0A000CB634E /* LaunchScreen.storyboard */,
@@ -138,6 +140,17 @@
 				CD2E6F091E9EA0A000CB634E /* Info.plist */,
 			);
 			path = coreImageFilterCollectionUITests;
+			sourceTree = "<group>";
+		};
+		CD2E6F181E9EA3F300CB634E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E6F221E9EAEE400CB634E /* ImageFiltersViewController.h */,
+				CD2E6F231E9EAEE400CB634E /* ImageFiltersViewController.m */,
+				CD2E6F1C1E9EA95E00CB634E /* ImageCollectionCell.h */,
+				CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2E6EEA1E9EA0A000CB634E /* ViewController.m in Sources */,
+				CD2E6F1E1E9EA95E00CB634E /* ImageCollectionCell.m in Sources */,
+				CD2E6F241E9EAEE400CB634E /* ImageFiltersViewController.m in Sources */,
 				CD2E6EE71E9EA0A000CB634E /* AppDelegate.m in Sources */,
 				CD2E6EE41E9EA0A000CB634E /* main.m in Sources */,
 			);
