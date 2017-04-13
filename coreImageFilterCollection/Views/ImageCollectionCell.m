@@ -11,21 +11,27 @@
 
 @implementation ImageCollectionCell
 
-- (UIImageView *)imageView {
-   if (!_imageView) {
+- (instancetype)initWithFrame:(CGRect)frame {
+   self = [super initWithFrame:frame];
+   if (self) {
       _imageView = [[UIImageView alloc] initWithFrame:self.contentView.bounds];
       [self.contentView addSubview:_imageView];
-      _imageView.backgroundColor = [UIColor blackColor];
       _imageView.contentMode = UIViewContentModeScaleAspectFill;
-      _imageView.layer.masksToBounds = true;
+      _imageView.layer.masksToBounds = YES;
+      
+      _activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:self.contentView.bounds];
+      _activityIndicator.hidesWhenStopped = YES;
+      _activityIndicator.color = [UIColor darkGrayColor];
+//      [_activityIndicator startAnimating];
+      [self.contentView addSubview:_activityIndicator];
+      [self.contentView bringSubviewToFront:_activityIndicator];
    }
-   return _imageView;
+   return self;
 }
 
 - (void)prepareForReuse {
-   [super prepareForReuse];
-   [self.imageView removeFromSuperview];
-   self.imageView = nil;
+   self.imageView.image = nil;
+   [_activityIndicator startAnimating];
 }
 
 @end

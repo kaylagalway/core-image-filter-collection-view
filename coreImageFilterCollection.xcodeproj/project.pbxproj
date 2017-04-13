@@ -16,6 +16,7 @@
 		CD2E6F081E9EA0A000CB634E /* coreImageFilterCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F071E9EA0A000CB634E /* coreImageFilterCollectionUITests.m */; };
 		CD2E6F1E1E9EA95E00CB634E /* ImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */; };
 		CD2E6F241E9EAEE400CB634E /* ImageFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F231E9EAEE400CB634E /* ImageFiltersViewController.m */; };
+		CD2E6F271E9F17C900CB634E /* ImageCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E6F261E9F17C900CB634E /* ImageCollectionViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCollectionCell.m; path = Views/ImageCollectionCell.m; sourceTree = "<group>"; };
 		CD2E6F221E9EAEE400CB634E /* ImageFiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageFiltersViewController.h; path = Views/ImageFiltersViewController.h; sourceTree = "<group>"; };
 		CD2E6F231E9EAEE400CB634E /* ImageFiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageFiltersViewController.m; path = Views/ImageFiltersViewController.m; sourceTree = "<group>"; };
+		CD2E6F251E9F17C900CB634E /* ImageCollectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCollectionViewModel.h; path = ViewModels/ImageCollectionViewModel.h; sourceTree = "<group>"; };
+		CD2E6F261E9F17C900CB634E /* ImageCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCollectionViewModel.m; path = ViewModels/ImageCollectionViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		CD2E6EE11E9EA0A000CB634E /* coreImageFilterCollection */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E6F281E9F17D000CB634E /* ViewModels */,
 				CD2E6F181E9EA3F300CB634E /* Views */,
 				CD2E6EE51E9EA0A000CB634E /* AppDelegate.h */,
 				CD2E6EE61E9EA0A000CB634E /* AppDelegate.m */,
@@ -151,6 +155,15 @@
 				CD2E6F1D1E9EA95E00CB634E /* ImageCollectionCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		CD2E6F281E9F17D000CB634E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E6F251E9F17C900CB634E /* ImageCollectionViewModel.h */,
+				CD2E6F261E9F17C900CB634E /* ImageCollectionViewModel.m */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +304,7 @@
 				CD2E6F241E9EAEE400CB634E /* ImageFiltersViewController.m in Sources */,
 				CD2E6EE71E9EA0A000CB634E /* AppDelegate.m in Sources */,
 				CD2E6EE41E9EA0A000CB634E /* main.m in Sources */,
+				CD2E6F271E9F17C900CB634E /* ImageCollectionViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

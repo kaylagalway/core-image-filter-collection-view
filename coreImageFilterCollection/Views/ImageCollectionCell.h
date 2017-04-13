@@ -11,6 +11,6 @@
 @interface ImageCollectionCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) NSString *assetIdentifier;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
