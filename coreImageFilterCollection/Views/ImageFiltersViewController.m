@@ -22,8 +22,10 @@ NSString *const BarButtonItem_RemoveFilter = @"Remove Filter";
 
 @interface ImageFiltersViewController ()
 
+@property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 @property (strong, nonatomic) ImageCollectionViewModel *viewModel;
+@property (strong, nonatomic) UILabel *noAccessLabel;
 
 @end
 
@@ -48,9 +50,12 @@ NSString *const BarButtonItem_RemoveFilter = @"Remove Filter";
 
 - (void)setUpViewModel {
    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
+      self.noAccessLabel.alpha = 0;
       self.viewModel = [[ImageCollectionViewModel alloc]init];
       self.viewModel.delegate = self;
       [self.viewModel fetchAllImageAssets];
+   } else {
+      [self showNoAccessLabel];
    }
 }
 
@@ -101,6 +106,15 @@ NSString *const BarButtonItem_RemoveFilter = @"Remove Filter";
       }]];
    }
    [self presentViewController:actionSheet animated:true completion:nil];
+}
+
+- (void)showNoAccessLabel {
+   self.noAccessLabel = [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+   self.noAccessLabel.text = @"Allow Photo Access in Settings";
+   self.noAccessLabel.textAlignment = NSTextAlignmentCenter;
+   self.noAccessLabel.lineBreakMode = NSLineBreakByWordWrapping;
+   self.noAccessLabel.translatesAutoresizingMaskIntoConstraints = NO;
+   [self.view addSubview:self.noAccessLabel];
 }
 
 //MARK: ImageCollectionViewModel Delegate

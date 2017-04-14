@@ -11,6 +11,4 @@
 
 @interface ImageFiltersViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, ImageCollectionViewModelDelegate, PHPhotoLibraryChangeObserver>
 
-@property (strong, nonatomic) UICollectionView *collectionView;
-
 @end
