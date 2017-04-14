@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ImageCollectionViewModel.h"
 
-@interface ImageFiltersViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, ImageCollectionViewModelDelegate>
+@interface ImageFiltersViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, ImageCollectionViewModelDelegate, PHPhotoLibraryChangeObserver>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 

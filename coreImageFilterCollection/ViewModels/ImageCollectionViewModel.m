@@ -15,36 +15,41 @@
 @property (strong, nonatomic) PHAssetCollection *assetCollection;
 @property (strong, nonatomic) NSOperationQueue *imageFilterQueue;
 @property (strong, nonatomic) NSMutableDictionary *pendingImageOperations;
+
 @end
 
 @implementation ImageCollectionViewModel
+
+//MARK: Lifecycle
 
 - (instancetype)init {
    self = [super init];
    if (self) {
       _imageFilterQueue = [[NSOperationQueue alloc] init];
-      _imageFilterQueue.maxConcurrentOperationCount = 1;
+      _imageFilterQueue.maxConcurrentOperationCount = 3;
       _pendingImageOperations = [[NSMutableDictionary alloc] init];
       _selectedFilter = noFilter;
    }
    return self;
 }
 
-- (void)fetchAllImages {
-   NSMutableArray *filterNames = [NSMutableArray array];
-   [filterNames addObjectsFromArray: [CIFilter filterNamesInCategory:kCICategoryColorEffect]];
+//MARK: Imperatives
+
+- (void)fetchAllImageAssets {
    if (self.fetchResult == nil) {
       PHFetchOptions *photosOptions = [[PHFetchOptions alloc] init];
       NSSortDescriptor *photosSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:false];
       photosOptions.sortDescriptors = @[photosSortDescriptor];
       self.fetchResult = [PHAsset fetchAssetsWithOptions:photosOptions];
+      dispatch_async(dispatch_get_main_queue(), ^{
+         [self.delegate didFetchPhotoAssets];
+      });
    }
 }
 
-#pragma add something that checks enum to see if filter necessary / tells us which dictionary to check
 
 - (void)populateImageAssetForIndexPath:(NSIndexPath *)indexPath completion: (void(^)(UIImage *))completion {
-   PHImageRequestOptions *options = [PHImageRequestOptions new];
+   PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
    options.networkAccessAllowed = NO;
    PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row];
    __weak typeof(self)weakSelf = self;
@@ -80,36 +85,46 @@
 }
 
 - (void)cancelFilterApplicationToImageAtIndexPath: (NSIndexPath *)indexPath {
-   NSBlockOperation *operation = self.pendingImageOperations[indexPath];
-   [operation cancel];
+   [self.pendingImageOperations[indexPath] cancel];
 }
 
 - (UIImage *)addFilter: (CIFilter *)filter toImage: (UIImage *)image {
-   //we own this
    EAGLContext *openGLContext = [[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES2];
-   
-   //own this
+   [openGLContext isMultiThreaded];
    CIContext *coreImageContext = [CIContext contextWithEAGLContext:openGLContext];
-   
-
    CGImageRef imageReference = image.CGImage;
    CIImage *coreImage = [CIImage imageWithCGImage: imageReference];
-   
-   //captured filter?
    [filter setValue:coreImage forKey:kCIInputImageKey];
-   
    CIImage *output = [filter valueForKey:kCIOutputImageKey];
-   
-
    CGImageRef outputImage = [coreImageContext createCGImage:output fromRect:output.extent];
-
    UIImage *filteredImage = [[UIImage imageWithCGImage:outputImage] copy];
-   
-
-//   CGImageRelease(imageReference);
    CGImageRelease(outputImage);
    return filteredImage;
 }
+
+- (void)didSelectFilterAtIndex: (NSInteger)index {
+   switch (index) {
+      case 0:
+         self.selectedFilter = monochrome;
+         break;
+      case 1:
+         self.selectedFilter = invert;
+         break;
+      case 2:
+         self.selectedFilter = noir;
+         break;
+      case 3:
+         self.selectedFilter = sepia;
+         break;
+      case 4:
+         self.selectedFilter = fade;
+         break;
+      default:
+         break;
+   }
+}
+
+//MARK: Factories
 
 - (nullable CIFilter *)currentFilter {
    switch (self.selectedFilter) {
@@ -117,7 +132,7 @@
          return [CIFilter filterWithName: @"CIPhotoEffectMono"];
          break;
       case invert:
-         return [CIFilter filterWithName: @"CIPhotoEffectInvert"];
+         return [CIFilter filterWithName: @"CIColorInvert"];
          break;
       case noir:
          return [CIFilter filterWithName: @"CIPhotoEffectNoir"];

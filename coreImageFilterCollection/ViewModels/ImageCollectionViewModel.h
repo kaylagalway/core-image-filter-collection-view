@@ -14,6 +14,7 @@
 @protocol ImageCollectionViewModelDelegate <NSObject>
 
 @required
+- (void)didFetchPhotoAssets;
 - (void)didFetchImage:(UIImage *)image atIndexPath:(NSIndexPath *)indexPath;
 
 @end
@@ -33,10 +34,10 @@ enum FilterOptions {
 @property (weak, nonatomic) id <ImageCollectionViewModelDelegate> delegate;
 @property (nonatomic) enum FilterOptions selectedFilter;
 
-- (void)fetchAllImages;
+- (void)fetchAllImageAssets;
 - (void)imageForIndexPath:(NSIndexPath *)indexPath;
 - (void)cancelFilterApplicationToImageAtIndexPath: (NSIndexPath *)indexPath;
-//- (void)fetchFilteredImagesInCollectionView:(UICollectionView *)collectionView;
+- (void)didSelectFilterAtIndex: (NSInteger)index;
 - (NSInteger)numberOfItemsInSection:(NSInteger)section;
 
 @end

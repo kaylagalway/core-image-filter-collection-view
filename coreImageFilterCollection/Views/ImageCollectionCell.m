@@ -15,14 +15,13 @@
    self = [super initWithFrame:frame];
    if (self) {
       _imageView = [[UIImageView alloc] initWithFrame:self.contentView.bounds];
-      [self.contentView addSubview:_imageView];
       _imageView.contentMode = UIViewContentModeScaleAspectFill;
-      _imageView.layer.masksToBounds = YES;
+      _imageView.clipsToBounds = YES;
+      [self.contentView addSubview:_imageView];
       
       _activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:self.contentView.bounds];
       _activityIndicator.hidesWhenStopped = YES;
       _activityIndicator.color = [UIColor darkGrayColor];
-//      [_activityIndicator startAnimating];
       [self.contentView addSubview:_activityIndicator];
       [self.contentView bringSubviewToFront:_activityIndicator];
    }
